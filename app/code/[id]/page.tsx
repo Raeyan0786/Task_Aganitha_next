@@ -40,32 +40,32 @@ export default async function CodeStatsPage(
 
   return (
     <div className="space-y-4">
-      <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 shadow">
+      
         <h2 className="text-base font-semibold mb-2">
           Stats for{' '}
           <span className="text-sky-400 font-mono">{stats.code}</span>
         </h2>
 
-        <dl className="grid gap-3 text-sm">
+        <div className="bg-white rounded-lg shadow p-4 text-sm space-y-2">
           <div>
-            <dt className="text-slate-400 text-xs">Short URL</dt>
-            <dd className="break-words">{stats.shortUrl}</dd>
+            <div className="font-medium">Short URL</div>
+            <dd className="text-blue-600 underline break-all">{stats.shortUrl}</dd>
           </div>
 
           <div>
-            <dt className="text-slate-400 text-xs">Target URL</dt>
-            <dd className="break-words">{stats.targetUrl}</dd>
+            <div className="font-medium">Target URL</div>
+            <dd className="break-all">{stats.targetUrl}</dd>
           </div>
 
           <div className="flex gap-6">
             <div>
-              <dt className="text-slate-400 text-xs">Total clicks</dt>
+              <div className="font-medium">Total clicks</div>
               <dd>{stats.clicks}</dd>
             </div>
 
             <div>
-              <dt className="text-slate-400 text-xs">Last clicked</dt>
-              <dd className="text-slate-300">
+              <div className="font-medium">Last clicked</div>
+              <dd className="">
                 {stats.lastClickedAt
                   ? new Date(stats.lastClickedAt).toLocaleString()
                   : 'Never'}
@@ -74,13 +74,12 @@ export default async function CodeStatsPage(
           </div>
 
           <div>
-            <dt className="text-slate-400 text-xs">Created at</dt>
-            <dd className="text-slate-300">
+            <div className="font-medium">Created at</div>
+            <dd className="">
               {new Date(stats.createdAt).toLocaleString()}
             </dd>
           </div>
-        </dl>
-      </div>
+        </div>
     </div>
   );
 }
