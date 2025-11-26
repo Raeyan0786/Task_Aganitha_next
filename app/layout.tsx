@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Open_Sans } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "react-hot-toast";
+import Link from "next/link";
 
 const openSans = Open_Sans({
   subsets: ['latin'],
@@ -48,7 +49,12 @@ export default function RootLayout({
       <footer className="border-t bg-white">
         <div className="max-w-5xl mx-auto py-3 px-4 text-xs text-gray-500 flex justify-between">
           <span>© {new Date().getFullYear()} Raeyan</span>
-          <span>Health: /healthz</span>
+         <Link
+      href="/healthz"
+      className="text-blue-600 hover:underline"
+    >
+      System Health
+    </Link>
         </div>
       </footer>
     </div>
