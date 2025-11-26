@@ -25,7 +25,7 @@ export default async function CodeStatsPage(
   }
 
   const base = process.env.NEXT_PUBLIC_BASE_URL ?? '';
-  const shortUrl = base ? `${base}/${link.code}` : `/${link.code}`;
+  const shortUrl = base ? `${base}/api/${link.code}` : `/api/${link.code}`;
 
   const stats: LinkStats = {
     code: link.code,
