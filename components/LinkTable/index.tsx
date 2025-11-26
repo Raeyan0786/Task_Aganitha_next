@@ -50,7 +50,7 @@ export function LinksTable({ links, loading, onDelete }: Props) {
                   href={process.env.NEXT_PUBLIC_BASE_URL ? `${process.env.NEXT_PUBLIC_BASE_URL}/api/${l.code}` : `/api/${l.code}`}
                   className="text-blue-600 hover:underline"
                   target="_blank"
-                  rel="noopener noreferrer"
+                 prefetch={false}
                 >
                   {l.code}
                 </Link>
