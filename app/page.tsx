@@ -50,10 +50,6 @@ export default function Dashboard() {
         code,
       }
       );
-      // const res = await axios.post<LinkItem>(`${API_BASE}/api/links`, {
-      //   url,
-      //   code,
-      // });
       setLinks((prev) => [res.data, ...prev]);
     } catch (err: unknown) {
       if (axios.isAxiosError(err) && err.response?.status === 409) {

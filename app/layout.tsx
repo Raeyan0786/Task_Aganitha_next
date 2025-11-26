@@ -47,7 +47,7 @@ export default function RootLayout({
       </main>
       <footer className="border-t bg-white">
         <div className="max-w-5xl mx-auto py-3 px-4 text-xs text-gray-500 flex justify-between">
-          <span>© {new Date().getFullYear()} Your Name</span>
+          <span>© {new Date().getFullYear()} Raeyan</span>
           <span>Health: /healthz</span>
         </div>
       </footer>

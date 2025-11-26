@@ -11,7 +11,9 @@ interface Props {
 }
 
 export function LinksTable({ links, loading, onDelete }: Props) {
-  const handleCopy = async (shortUrl: string) => {
+  const handleCopy = async (code: string) => {
+    const base = process.env.NEXT_PUBLIC_BASE_URL ?? '';
+  const shortUrl = `${base}/${code}`;
     await navigator.clipboard.writeText(shortUrl);
     toast.success("Successfully copied short URL")
   };
@@ -65,7 +67,7 @@ export function LinksTable({ links, loading, onDelete }: Props) {
               </td>
               <td className="px-4 py-2 text-right space-x-2 flex justify-end items-center">
                 <button
-                  onClick={() => handleCopy(l.shortUrl)}
+                  onClick={() => handleCopy(l.code)}
                   title="Copy"
                   className="text-xs p-1 border rounded hover:bg-gray-50 flex items-center"
                 >
