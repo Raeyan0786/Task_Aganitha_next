@@ -27,7 +27,7 @@ export default function Dashboard() {
       setLoading(true);
       setError(null);
       // const res = await axios.get<LinkItem[]>(`${API_BASE}/api/links`);
-      const res = await apiClient.get('/links');
+      const res = await apiClient.get('/api/links');
       setLinks(res.data);
     } catch  {
       setError("Failed to load links");
@@ -44,7 +44,7 @@ export default function Dashboard() {
     try {
       setError(null);
       const res = await apiClient.post(
-        '/links',
+        '/api/links',
        {
         url,
         code,
@@ -64,7 +64,7 @@ export default function Dashboard() {
 
   const handleDelete = async (code: string) => {
     try {
-      await apiClient.delete(`/links/${code}`);
+      await apiClient.delete(`/api/links/${code}`);
       setLinks((prev) => prev.filter((l) => l.code !== code));
     } catch {
       setError("Failed to delete link");

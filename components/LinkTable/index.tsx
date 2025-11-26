@@ -47,7 +47,7 @@ export function LinksTable({ links, loading, onDelete }: Props) {
             <tr key={l.code} className="border-t">
               <td className="px-4 py-2">
                 <Link
-                  href={process.env.NEXT_PUBLIC_BASE_URL ? `${process.env.NEXT_PUBLIC_BASE_URL}/api/${l.code}` : `/api/${l.code}`}
+                  href={`/${l.code}`}
                   className="text-blue-600 hover:underline"
                   target="_blank"
                  prefetch={false}
