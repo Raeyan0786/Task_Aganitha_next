@@ -103,6 +103,7 @@ export default function Dashboard() {
         links={filteredLinks}
         loading={loading}
         onDelete={handleDelete}
+        loadLinks={loadLinks}
       />
     </div>
   );

@@ -8,14 +8,26 @@ interface Props {
   links: LinkItem[];
   loading: boolean;
   onDelete: (code: string) => void;
+  loadLinks:()=>void;
 }
 
-export function LinksTable({ links, loading, onDelete }: Props) {
+export function LinksTable({ links, loading, onDelete,loadLinks }: Props) {
   const handleCopy = async (code: string) => {
     const base = process.env.NEXT_PUBLIC_BASE_URL ?? '';
   const shortUrl = `${base}/${code}`;
     await navigator.clipboard.writeText(shortUrl);
     toast.success("Successfully copied short URL")
+  };
+
+  const handleOpenShortUrl = (code: string) => {
+    const base = process.env.NEXT_PUBLIC_BASE_URL ?? "";
+    const shortUrl = `${base}/${code}`;
+
+    window.open(shortUrl, "_blank", "noopener,noreferrer");
+
+    setTimeout(() => {
+      loadLinks();
+    }, 700);
   };
 
   if (loading) {
@@ -46,14 +58,23 @@ export function LinksTable({ links, loading, onDelete }: Props) {
           {links.map((l) => (
             <tr key={l.code} className="border-t">
               <td className="px-4 py-2">
-                <Link
+                {/* <Link
                   href={`/${l.code}`}
                   className="text-blue-600 hover:underline"
                   target="_blank"
                  prefetch={false}
+                 onClick={()=>loadLinks()}
                 >
                   {l.code}
-                </Link>
+                </Link> */}
+
+                <button
+                  type="button"
+                  className="text-blue-600 hover:underline"
+                  onClick={() => handleOpenShortUrl(l.code)}
+                >
+                  {l.code}
+                </button>
               </td>
               <td className="px-4 py-2 max-w-xs">
                 <div className="truncate" title={l.targetUrl}>
